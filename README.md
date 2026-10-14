@@ -1,126 +1,119 @@
-# City of Cape Town Municipal Services Application
+City of Cape Town Municipal Services Application
+Advanced Application Development (AAPD7112) — Part 1 and Part 2
+Student number: ST10389901
+Developer: Zesande Mbekwa
+Academic prototype: This is an educational Windows desktop application, not an official City of Cape Town product. It is not connected to the municipality's live systems, and the reports shown here are not submitted to the City.
 
-## Part 1 — Registration, Sign In and Municipal Issue Reporting
+Project overview
+The City of Cape Town Municipal Services Application is a C# Windows Forms (.NET Framework) desktop prototype that provides separate Citizen and Administrator portals. Citizens can register, sign in, submit municipal issue reports, review their reports, and browse local events and announcements. Administrators can review submitted issues, inspect attachments, change request statuses, manage users, and publish events and announcements.
+Part 2 extends the registration and issue-reporting features from Part 1 with administrator workflows, citizen-facing status updates, event and announcement management, and event recommendations based on user interactions.
+Demonstration and source code
+- Video demonstration: https://youtu.be/f4Mbzu8wlM0
+- GitHub repository: https://github.com/ZesandeMbekwa101/CityOfCapeTownMunicipalServices
+Features
+Citizen Portal
+- Account registration: Create an account using personal and address information, subject to form validation.
+- Sign in and sign out: Authenticate and access citizen-specific screens.
+- Report an issue: Provide a location, category, description, and optional supporting attachment. Successful submissions receive a reference number.
+- My Reports: Review submitted issues, search or filter by status, and view progress indicators.
+- Local Events and Announcements: Search and browse published municipal items, use category filters, and open item details.
+- Recommended for You: View event recommendations informed by recorded search and category interests.
+Administrator Portal
+- Role-based access: Administrator accounts open the admin dashboard instead of the citizen dashboard.
+- Service Request Management: Search and filter citizen submissions, review details and attachments, and change statuses such as Pending, In Progress, Resolved, and Rejected. Status labels in citizen-facing screens may differ depending on the implementation.
+- User Management: View registered users and their roles, search and filter accounts, and access the Add User action.
+- Event Management: Add, edit, delete, search, and filter municipal events.
+- Announcement Management: Add, edit, delete, search, and filter municipal announcements.
+- Separate category choices: The editor presents event-specific categories for events and announcement-specific categories for announcements.
+- Dashboard navigation: Includes Service Requests, Events, Announcements, Users, Resources, and Settings sections. The presence of a dashboard section does not necessarily mean every underlying feature is implemented.
+Application workflow
+1. The application opens with a splash screen and provides access to registration or sign-in.
+2. A citizen registers, signs in, and opens the Citizen Portal.
+3. The citizen submits a municipal issue and receives a reference number.
+4. The issue appears in the citizen's My Reports screen and in the administrator's Service Requests management screen, provided both use the shared application store.
+5. An administrator signs in, opens the report, optionally reviews its attachment, and changes its status.
+6. The citizen returns to My Reports to see the updated status and progress indicator.
+7. Administrators add events and announcements through their respective management pages.
+8. Citizens browse those items in Local Events and Announcements and can open Recommended for You for suggestions based on recorded interactions.
+Technologies and project structure
+- Language: C#
+- UI framework: Windows Forms on .NET Framework
+- IDE: Microsoft Visual Studio
+- Data structures: In-memory collections such as List<T>, Dictionary<TKey,TValue>, SortedDictionary<TKey,TValue>, HashSet<T>, Stack<T>, and Queue<T>
+Folder / file	Purpose
+Forms/	Citizen, authentication, and administrator Windows Forms screens
+Models/	Application data models such as IssueReport and MunicipalEvent
+DataStructures/	Stores and collection-based data operations, including IssueStore and EventStore
+Services/	User/session and application services
+Helpers/	Shared helper functionality
+Resources/ and Properties/	Images, branding, and project resources
+Program.cs	Application entry point
+App.config	Application configuration
+CityOfCapeTownMunicipalServices.csproj	Windows Forms project
+CityOfCapeTownMunicipalServices.slnx	Visual Studio solution file
 
-### Project overview
 
-The **City of Cape Town Municipal Services Application** is a C# Windows Forms desktop application developed as a prototype to help residents engage with municipal services. Part 1 focuses on user registration, authentication, reporting municipal issues, and viewing previously submitted reports.
+Data structure examples
+- IssueStore: Maintains submitted reports in a List<IssueReport> and supports retrieving all reports, finding a report by reference, and filtering reports by user email.
+- EventStore: Organises events by date with a SortedDictionary, looks up events by ID with a Dictionary, tracks categories with a HashSet, records searches in a Stack, and tracks recent category interests in a Queue.
+- Recommendation information: Category-interest counts can be used to identify categories the citizen has interacted with most often.
+Requirements
+- Windows computer
+- Visual Studio with the .NET desktop development workload
+- The .NET Framework Developer/Targeting Pack matching the target framework in CityOfCapeTownMunicipalServices.csproj
+- All project source files, images, and resources
+No external database is required for the current in-memory prototype.
+How to build and run
+1. Clone or download this repository:git clone https://github.com/ZesandeMbekwa101/CityOfCapeTownMunicipalServices.git
+2. Open CityOfCapeTownMunicipalServices.slnx in a compatible Visual Studio version. If necessary, open CityOfCapeTownMunicipalServices.csproj directly.
+3. Allow Visual Studio to load the project and resolve references.
+4. Install the required .NET Framework targeting pack if prompted.
+5. Select Build > Build Solution or press Ctrl + Shift + B.
+6. Set CityOfCapeTownMunicipalServices as the startup project if necessary.
+7. Press F5 to run with debugging, or Ctrl + F5 to run without debugging.
+How to test the main features
+Citizen workflow
+1. From Sign In, select Create an Account and complete the registration form.
+2. Sign in with the registered account.
+3. Select Report Issue and enter the location, category, description, and optional attachment.
+4. Submit the report and record its generated reference number.
+5. Open My Reports and confirm that the new report appears.
+6. Open Local Events and Announcements to browse available items, search by text, and select categories.
+7. View item details and try Recommended for You after interacting with event categories.
+Administrator workflow
+1. Sign in with an administrator account configured in the project's user store.
+2. Open Service Requests and locate the report submitted in the citizen workflow.
+3. Select View Details to inspect its information and any available attachment.
+4. Select Change Status, choose a new status, and confirm the update.
+5. Return to the citizen's My Reports screen and verify the new status appears.
+6. Open Events, add an event, and verify that it appears in the management list.
+7. Open Announcements, add an announcement, and verify that it appears in its management list.
+8. Return to the citizen portal and confirm that published items appear in the Local Events and Announcements screen.
+Admin credentials: Use the administrator account defined in the application's user store. Do not commit real passwords or secrets to the README or repository.
 
-> **Note:** This is an academic prototype, not an official City of Cape Town application. It is not connected to the municipality's live service-request system.
+Important limitations
+- In-memory storage: The provided IssueStore and EventStore use static in-memory collections. Records are available only within the same running application process and are lost when that process exits unless separate persistence has been implemented.
+- Not a live municipal service: Submissions do not create official City of Cape Town service requests.
+- Attachments: Files referenced by an attachment path must still exist at that path for an administrator to open them.
+- Recommendations: Recommendations are based on application-recorded searches and category interactions, not an external recommendation service.
+- Demo scope: Features should be evaluated against the supplied implementation; some dashboard sections may be placeholders or future work.
+Troubleshooting
+Problem	What to check
+Solution will not open	Use a compatible Visual Studio version and open the .slnx or .csproj file.
+Missing .NET Framework	Install the target framework's Developer/Targeting Pack.
+Build errors	Review Error List, references, namespaces, and missing resources.
+Images or logo missing	Confirm resource files are present and included in the project.
+Registration fails	Check required fields, formats, password confirmation, and terms acceptance.
+Sign-in fails	Check the account credentials and assigned role.
+Submitted request missing from admin portal	Ensure the citizen form saves to IssueStore and the admin page reads from that same store in the same running process.
+Status does not update	Confirm the admin changes the stored IssueReport and refresh the citizen's report list.
+Events list is empty	Add events through the administrator portal; sample events are not automatically populated.
+Attachment does not open	Confirm the file still exists at its saved path.
+Data disappears after restart	This is expected with the current in-memory stores. Add persistence if required.
 
-### Requirements
 
-- A Windows computer.
-- Microsoft Visual Studio with the **.NET desktop development** workload installed.
-- The **.NET Framework targeting/developer pack** matching the version configured in the project.
-- The complete Visual Studio solution/project folder, including its source files, resources and configuration files.
-
-No external database is required for the current prototype.
-
-### 1. Open the project in Visual Studio
-
-1. Extract the project folder if it was provided as a ZIP file.
-2. Open **Visual Studio**.
-3. Select **Open a project or solution**.
-4. Navigate to the project folder and open the **`.sln`** solution file. If a solution file is not available, open the **`.csproj`** project file.
-5. Wait for Visual Studio to finish loading the project.
-6. In **Solution Explorer**, verify that the forms, models, services and resources are included in the project.
-
-If Visual Studio reports that a .NET Framework targeting pack is missing, install the version requested by the project and reopen the solution.
-
-### 2. Compile (build) the application
-
-1. In Visual Studio, select **Build > Clean Solution** (optional, especially after changing code).
-2. Select **Build > Build Solution**, or press **Ctrl + Shift + B**.
-3. Check the **Output** window for the build result.
-4. Confirm that the build finishes with **0 errors**.
-
-If the build fails, open **View > Error List**, double-click the first error and correct it before rebuilding. Also check that required images and other project resources are present.
-
-### 3. Run the application
-
-1. In **Solution Explorer**, right-click the application project and choose **Set as Startup Project**, if necessary.
-2. Press **F5** or select **Debug > Start Debugging**.
-3. Alternatively, press **Ctrl + F5** to start without debugging.
-4. The application's configured startup screen will open. Follow its navigation to the **Sign In** screen.
-
-### 4. Register a new account
-
-1. On the **Sign In** screen, click **Create an Account**.
-2. Complete the registration form with the required details:
-   - First name and last name.
-   - Email address and phone number.
-   - Residential address, suburb, city/area and postal code.
-   - Password and confirm password.
-3. Read and accept the **Terms and Conditions and Privacy Policy** checkbox.
-4. Click **Create Account**.
-5. If a required field is missing or invalid, review the validation message displayed near that field, correct the entry and submit again.
-6. After successful registration, return to the sign-in process as directed by the application.
-
-### 5. Sign in
-
-1. Enter the email address used during registration.
-2. Enter the account password.
-3. Click **Sign In**.
-4. If the details are incorrect, the application displays an error message.
-5. If authentication succeeds, a success message appears and the **Home** screen opens.
-
-The application starts a user session after a successful sign-in.
-
-### 6. Submit a municipal issue (Part 1)
-
-1. On the **Home** screen, open the **Report Issue** section.
-2. Complete the issue-reporting form using the fields shown in the application. Describe the municipal problem clearly and provide the relevant location and any other required information.
-3. Where the form provides an attachment option, add supporting evidence such as a photo if appropriate.
-4. Click the form's **Submit** button.
-5. Correct any validation errors if prompted.
-6. After successful submission, review the confirmation and any report/reference number displayed.
-
-**Example test issue:** A pothole on a local road, with a description of its location and the potential safety concern.
-
-### 7. View submitted reports
-
-1. Return to the **Home** screen.
-2. Open **My Reports**.
-3. Review the list of issues previously submitted through the application.
-4. Select a report or its details option, if available, to review the recorded information.
-5. Compare the displayed report with the details entered during submission to confirm that the report was captured correctly.
-
-**Expected result:** The issue submitted in Step 6 appears in **My Reports**, together with the information and reference details supported by the application.
-
-### 8. Suggested Part 1 testing checklist
-
-- [ ] The application builds without compilation errors.
-- [ ] The application launches successfully.
-- [ ] The **Create Account** screen opens from **Sign In**.
-- [ ] Required-field validation appears when registration information is missing.
-- [ ] A valid user can register.
-- [ ] Invalid sign-in credentials display an error.
-- [ ] A registered user can sign in and reach **Home**.
-- [ ] The **Report Issue** form opens.
-- [ ] A valid issue can be submitted successfully.
-- [ ] The submitted issue is visible under **My Reports**.
-- [ ] The user can return to the Home screen and navigate between Part 1 features.
-
-### 9. Important data-storage note
-
-This prototype does **not** use an external database. Its application services and stores manage data locally within the implementation. Do not assume that accounts or submitted reports remain available after the application is closed unless persistence has been explicitly implemented and tested in the supplied project.
-
-### 10. Troubleshooting
-
-| Problem | What to check |
-| --- | --- |
-| Solution does not open | Open the correct `.sln` or `.csproj` file in Visual Studio. |
-| Missing .NET Framework error | Install the targeting pack for the framework version specified by the project. |
-| Build fails | Inspect **Error List** and confirm all project files and references are included. |
-| Logo or images are missing | Check the project resources and ensure they are included in the build. |
-| Registration does not proceed | Complete all required fields, verify input formats and accept the terms. |
-| Sign-in fails | Use the registered email and correct password; review the validation message. |
-| Report does not submit | Complete required issue details and resolve any validation errors. |
-| Submitted report is not listed | Check **My Reports** during the same application session and confirm submission succeeded. |
-
-### Scope of this README
-
-**Included in Part 1:** Registration, sign-in, Home navigation, municipal issue submission, and viewing submitted reports.
-
-**Not covered here:** Part 2 — Local Events and Announcements; Part 3 — Service Request Status Tracking.
+Academic scope
+- Part 1: Registration, authentication, citizen home navigation, issue submission, and report viewing.
+- Part 2: Administrator portal, issue management and status updates, user management, event and announcement creation/management, citizen event browsing, and event recommendations.
+Disclaimer
+This repository is an academic prototype created for coursework. It is not affiliated with, endorsed by, or integrated into the official City of Cape Town municipal service systems.
