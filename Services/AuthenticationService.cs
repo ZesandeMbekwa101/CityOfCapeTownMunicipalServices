@@ -5,79 +5,36 @@ namespace CityOfCapeTownMunicipalServices.Services
 {
     public class AuthenticationService
     {
-        // =====================================================
-        // REGISTER
-        // =====================================================
-
-        public bool Register(
-            User user,
-            out string message)
+        public bool Register(User user, out string message)
         {
-            if (user == null)
+            if (user == null || string.IsNullOrWhiteSpace(user.Email) ||
+                string.IsNullOrWhiteSpace(user.Password))
             {
-                message =
-                    "User information could not be created.";
-
+                message = "User information is incomplete.";
                 return false;
             }
 
-
-            if (UserStore.UserExists(
-                user.Email))
+            if (UserStore.UserExists(user.Email))
             {
-                message =
-                    "An account with this email address already exists.";
-
+                message = "An account with this email address already exists.";
                 return false;
             }
 
-
-            bool added =
-                UserStore.AddUser(
-                    user);
-
-
-            if (!added)
+            user.Role = UserRole.Citizen;
+            if (!UserStore.AddUser(user))
             {
-                message =
-                    "Unable to create the account.";
-
+                message = "Unable to create the account.";
                 return false;
             }
 
-
-            message =
-                "Account created successfully.";
-
+            message = "Citizen account created successfully.";
             return true;
         }
 
-
-        // =====================================================
-        // SIGN IN
-        // =====================================================
-
-        public User SignIn(
-            string email,
-            string password)
+        public User SignIn(string email, string password)
         {
-            User user =
-                UserStore.GetUserByEmail(
-                    email);
-
-
-            if (user == null)
-            {
-                return null;
-            }
-
-
-            if (user.Password != password)
-            {
-                return null;
-            }
-
-
+            User user = UserStore.GetUserByEmail(email);
+            if (user == null || user.Password != password) return null;
             return user;
         }
     }

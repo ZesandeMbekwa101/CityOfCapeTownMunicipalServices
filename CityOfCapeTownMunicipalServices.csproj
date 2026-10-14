@@ -46,8 +46,60 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataStructures\AdminContentStore.cs" />
+    <Compile Include="DataStructures\EventPriorityQueue.cs" />
+    <Compile Include="DataStructures\EventStore.cs" />
     <Compile Include="DataStructures\IssueStore.cs" />
     <Compile Include="DataStructures\UserStore.cs" />
+    <Compile Include="Forms\Admin\AdminAddUserForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Admin\AdminAddUserForm.Designer.cs">
+      <DependentUpon>AdminAddUserForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Admin\AdminAnnouncementsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Admin\AdminAnnouncementsForm.Designer.cs">
+      <DependentUpon>AdminAnnouncementsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Admin\AdminEventEditorForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Admin\AdminEventEditorForm.Designer.cs">
+      <DependentUpon>AdminEventEditorForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Admin\AdminEventsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Admin\AdminEventsForm.Designer.cs">
+      <DependentUpon>AdminEventsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Admin\AdminHomeForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Admin\AdminHomeForm.Designer.cs">
+      <DependentUpon>AdminHomeForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Admin\AdminRequestDetailsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Admin\AdminRequestDetailsForm.Designer.cs">
+      <DependentUpon>AdminRequestDetailsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Admin\AdminRequestsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Admin\AdminRequestsForm.Designer.cs">
+      <DependentUpon>AdminRequestsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Admin\AdminUi.cs" />
+    <Compile Include="Forms\Admin\AdminUsersForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Admin\AdminUsersForm.Designer.cs">
+      <DependentUpon>AdminUsersForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Authentication\AuthenticationFailureForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -71,6 +123,30 @@
     </Compile>
     <Compile Include="Forms\Authentication\SignUpForm.Designer.cs">
       <DependentUpon>SignUpForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Events\EventDetailsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Events\EventDetailsForm.Designer.cs">
+      <DependentUpon>EventDetailsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Events\LocalEventsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Events\LocalEventsForm.Designer.cs">
+      <DependentUpon>LocalEventsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Events\RecommendedEventsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Events\RecommendedEventsForm.Designer.cs">
+      <DependentUpon>RecommendedEventsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Events\SearchResultsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Events\SearchResultsForm.Designer.cs">
+      <DependentUpon>SearchResultsForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Home\HomeForm.cs">
       <SubType>Form</SubType>
@@ -108,16 +184,19 @@
     <Compile Include="Forms\Splash\SplashForm.Designer.cs">
       <DependentUpon>SplashForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Helpers\ReferenceNumberHelper.cs" />
     <Compile Include="Helpers\ThemeHelper.cs" />
-    <Compile Include="Helpers\ValidationHelper.cs" />
+    <Compile Include="Models\AdminContent.cs" />
     <Compile Include="Models\IssueReport.cs" />
+    <Compile Include="Models\MunicipalEvent.cs" />
     <Compile Include="Models\User.cs" />
+    <Compile Include="Models\UserRole.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="Services\AdminAccountService.cs" />
+    <Compile Include="Services\EventService.cs" />
     <Compile Include="Services\UserSession.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

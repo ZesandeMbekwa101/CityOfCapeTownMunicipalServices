@@ -4,9 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CityOfCapeTownMunicipalServices.Helpers
+namespace CityOfCapeTownMunicipalServices.Models
 {
-    internal class ValidationHelper
-    {
-    }
+      public enum UserRole { Citizen, Admin }
 }

@@ -5,7 +5,7 @@ namespace CityOfCapeTownMunicipalServices.Forms.Authentication
 {
     partial class SignInForm
     {
-        private System.ComponentModel.IContainer components;
+        private System.ComponentModel.IContainer components = null;
 
         private Panel pnlHeader;
         private PictureBox picLogo;
@@ -23,10 +23,12 @@ namespace CityOfCapeTownMunicipalServices.Forms.Authentication
         private Label lblSubtitle;
 
         private Label lblEmail;
+        private Panel pnlEmailInput;
         private TextBox txtEmail;
         private Label lblEmailError;
 
         private Label lblPassword;
+        private Panel pnlPasswordInput;
         private TextBox txtPassword;
         private Label lblPasswordError;
 
@@ -38,13 +40,22 @@ namespace CityOfCapeTownMunicipalServices.Forms.Authentication
         private Label lblNoAccount;
         private Button btnCreateAccount;
 
+        private PictureBox picCommunity;
+        private Panel pnlCommunityText;
+        private Label lblCommunityTitle;
+        private Label lblCommunityDescription;
+        private Label lblCommunityFeature1;
+        private Label lblCommunityFeature2;
+        private Label lblCommunityFeature3;
+
         private TableLayoutPanel colourStrip;
 
 
         protected override void Dispose(
             bool disposing)
         {
-            if (disposing &&
+            if (
+                disposing &&
                 components != null)
             {
                 components.Dispose();
@@ -92,6 +103,9 @@ namespace CityOfCapeTownMunicipalServices.Forms.Authentication
             this.lblEmail =
                 new Label();
 
+            this.pnlEmailInput =
+                new Panel();
+
             this.txtEmail =
                 new TextBox();
 
@@ -100,6 +114,9 @@ namespace CityOfCapeTownMunicipalServices.Forms.Authentication
 
             this.lblPassword =
                 new Label();
+
+            this.pnlPasswordInput =
+                new Panel();
 
             this.txtPassword =
                 new TextBox();
@@ -122,8 +139,30 @@ namespace CityOfCapeTownMunicipalServices.Forms.Authentication
             this.btnCreateAccount =
                 new Button();
 
+            this.picCommunity =
+                new PictureBox();
+
+            this.pnlCommunityText =
+                new Panel();
+
+            this.lblCommunityTitle =
+                new Label();
+
+            this.lblCommunityDescription =
+                new Label();
+
+            this.lblCommunityFeature1 =
+                new Label();
+
+            this.lblCommunityFeature2 =
+                new Label();
+
+            this.lblCommunityFeature3 =
+                new Label();
+
             this.colourStrip =
                 new TableLayoutPanel();
+
 
             this.SuspendLayout();
 
@@ -137,19 +176,22 @@ namespace CityOfCapeTownMunicipalServices.Forms.Authentication
 
             this.ClientSize =
                 new Size(
-                    1050,
-                    700);
+                    1100,
+                    720);
 
             this.MinimumSize =
                 new Size(
-                    850,
-                    600);
+                    900,
+                    620);
 
             this.StartPosition =
                 FormStartPosition.CenterScreen;
 
             this.BackColor =
-                Color.White;
+                Color.FromArgb(
+                    247,
+                    250,
+                    252);
 
             this.Font =
                 new Font(
@@ -168,7 +210,7 @@ namespace CityOfCapeTownMunicipalServices.Forms.Authentication
                 DockStyle.Top;
 
             this.pnlHeader.Height =
-                100;
+                90;
 
             this.pnlHeader.BackColor =
                 Color.FromArgb(
@@ -177,17 +219,19 @@ namespace CityOfCapeTownMunicipalServices.Forms.Authentication
                     113);
 
 
+            // =====================================================
             // LOGO
+            // =====================================================
 
             this.picLogo.Size =
                 new Size(
                     70,
-                    70);
+                    65);
 
             this.picLogo.Location =
                 new Point(
                     30,
-                    15);
+                    12);
 
             this.picLogo.SizeMode =
                 PictureBoxSizeMode.Zoom;
@@ -195,11 +239,10 @@ namespace CityOfCapeTownMunicipalServices.Forms.Authentication
             this.picLogo.Image =
                 Properties.Resources.city_logo;
 
-            this.pnlHeader.Controls.Add(
-                this.picLogo);
 
-
-            // SLOGAN
+            // =====================================================
+            // HEADER SLOGAN
+            // =====================================================
 
             this.lblHeaderSlogan.Text =
                 "Making progress possible.\nTogether.";
@@ -222,13 +265,17 @@ namespace CityOfCapeTownMunicipalServices.Forms.Authentication
 
             this.lblHeaderSlogan.Size =
                 new Size(
-                    230,
+                    240,
                     50);
 
             this.lblHeaderSlogan.Location =
                 new Point(
-                    780,
-                    25);
+                    825,
+                    20);
+
+
+            this.pnlHeader.Controls.Add(
+                this.picLogo);
 
             this.pnlHeader.Controls.Add(
                 this.lblHeaderSlogan);
@@ -243,10 +290,10 @@ namespace CityOfCapeTownMunicipalServices.Forms.Authentication
 
             this.mainLayout.Padding =
                 new Padding(
+                    45,
                     35,
-                    35,
-                    35,
-                    35);
+                    45,
+                    30);
 
             this.mainLayout.ColumnCount =
                 2;
@@ -254,15 +301,28 @@ namespace CityOfCapeTownMunicipalServices.Forms.Authentication
             this.mainLayout.RowCount =
                 1;
 
+            this.mainLayout.BackColor =
+                Color.FromArgb(
+                    247,
+                    250,
+                    252);
+
+
+            // Login gets slightly more space.
             this.mainLayout.ColumnStyles.Add(
                 new ColumnStyle(
                     SizeType.Percent,
-                    62F));
+                    57F));
 
             this.mainLayout.ColumnStyles.Add(
                 new ColumnStyle(
                     SizeType.Percent,
-                    38F));
+                    43F));
+
+            this.mainLayout.RowStyles.Add(
+                new RowStyle(
+                    SizeType.Percent,
+                    100F));
 
 
             // =====================================================
@@ -272,18 +332,19 @@ namespace CityOfCapeTownMunicipalServices.Forms.Authentication
             this.pnlLogin.Dock =
                 DockStyle.Fill;
 
-            this.pnlLogin.AutoScroll =
-                true;
-
-            this.pnlLogin.BackColor =
-                Color.White;
-
             this.pnlLogin.Margin =
                 new Padding(
                     0,
                     0,
-                    20,
+                    30,
                     0);
+
+            this.pnlLogin.BackColor =
+                Color.White;
+
+            this.pnlLogin.AutoScroll =
+                true;
+
 
             this.mainLayout.Controls.Add(
                 this.pnlLogin,
@@ -294,14 +355,15 @@ namespace CityOfCapeTownMunicipalServices.Forms.Authentication
             // =====================================================
             // LOGIN OUTER LAYOUT
             //
-            // Creates margins around the actual login form.
+            // Keeps the form a comfortable width instead of
+            // stretching fields across the whole panel.
             // =====================================================
 
             this.loginOuterLayout.Dock =
                 DockStyle.Top;
 
             this.loginOuterLayout.Height =
-                530;
+                575;
 
             this.loginOuterLayout.ColumnCount =
                 3;
@@ -309,20 +371,28 @@ namespace CityOfCapeTownMunicipalServices.Forms.Authentication
             this.loginOuterLayout.RowCount =
                 1;
 
-            this.loginOuterLayout.ColumnStyles.Add(
-                new ColumnStyle(
-                    SizeType.Percent,
-                    5F));
 
             this.loginOuterLayout.ColumnStyles.Add(
                 new ColumnStyle(
                     SizeType.Percent,
-                    90F));
+                    8F));
 
             this.loginOuterLayout.ColumnStyles.Add(
                 new ColumnStyle(
                     SizeType.Percent,
-                    5F));
+                    84F));
+
+            this.loginOuterLayout.ColumnStyles.Add(
+                new ColumnStyle(
+                    SizeType.Percent,
+                    8F));
+
+
+            this.loginOuterLayout.RowStyles.Add(
+                new RowStyle(
+                    SizeType.Percent,
+                    100F));
+
 
             this.pnlLogin.Controls.Add(
                 this.loginOuterLayout);
@@ -344,9 +414,69 @@ namespace CityOfCapeTownMunicipalServices.Forms.Authentication
             this.loginFormLayout.Padding =
                 new Padding(
                     0,
-                    10,
+                    45,
                     0,
                     0);
+
+
+            // Explicit row heights stop the inputs from
+            // appearing too high or being squeezed together.
+
+            this.loginFormLayout.RowStyles.Add(
+                new RowStyle(
+                    SizeType.Absolute,
+                    55F));
+
+            this.loginFormLayout.RowStyles.Add(
+                new RowStyle(
+                    SizeType.Absolute,
+                    55F));
+
+            this.loginFormLayout.RowStyles.Add(
+                new RowStyle(
+                    SizeType.Absolute,
+                    30F));
+
+            this.loginFormLayout.RowStyles.Add(
+                new RowStyle(
+                    SizeType.Absolute,
+                    52F));
+
+            this.loginFormLayout.RowStyles.Add(
+                new RowStyle(
+                    SizeType.Absolute,
+                    32F));
+
+            this.loginFormLayout.RowStyles.Add(
+                new RowStyle(
+                    SizeType.Absolute,
+                    30F));
+
+            this.loginFormLayout.RowStyles.Add(
+                new RowStyle(
+                    SizeType.Absolute,
+                    52F));
+
+            this.loginFormLayout.RowStyles.Add(
+                new RowStyle(
+                    SizeType.Absolute,
+                    32F));
+
+            this.loginFormLayout.RowStyles.Add(
+                new RowStyle(
+                    SizeType.Absolute,
+                    42F));
+
+            this.loginFormLayout.RowStyles.Add(
+                new RowStyle(
+                    SizeType.Absolute,
+                    65F));
+
+            this.loginFormLayout.RowStyles.Add(
+                new RowStyle(
+                    SizeType.Absolute,
+                    95F));
+
 
             this.loginOuterLayout.Controls.Add(
                 this.loginFormLayout,
@@ -361,10 +491,13 @@ namespace CityOfCapeTownMunicipalServices.Forms.Authentication
             this.lblTitle.Text =
                 "Sign In";
 
+            this.lblTitle.Dock =
+                DockStyle.Fill;
+
             this.lblTitle.Font =
                 new Font(
                     "Segoe UI",
-                    24F,
+                    23F,
                     FontStyle.Bold);
 
             this.lblTitle.ForeColor =
@@ -373,15 +506,9 @@ namespace CityOfCapeTownMunicipalServices.Forms.Authentication
                     59,
                     113);
 
-            this.lblTitle.AutoSize =
-                true;
+            this.lblTitle.TextAlign =
+                ContentAlignment.BottomLeft;
 
-            this.lblTitle.Margin =
-                new Padding(
-                    0,
-                    0,
-                    0,
-                    3);
 
             this.loginFormLayout.Controls.Add(
                 this.lblTitle,
@@ -396,26 +523,30 @@ namespace CityOfCapeTownMunicipalServices.Forms.Authentication
             this.lblSubtitle.Text =
                 "Welcome back! Please sign in to continue.";
 
+            this.lblSubtitle.Dock =
+                DockStyle.Fill;
+
             this.lblSubtitle.Font =
                 new Font(
                     "Segoe UI",
-                    11F);
+                    10.5F);
 
             this.lblSubtitle.ForeColor =
                 Color.FromArgb(
-                    80,
-                    100,
+                    90,
+                    105,
                     120);
 
-            this.lblSubtitle.AutoSize =
-                true;
+            this.lblSubtitle.TextAlign =
+                ContentAlignment.TopLeft;
 
-            this.lblSubtitle.Margin =
+            this.lblSubtitle.Padding =
                 new Padding(
                     2,
+                    4,
                     0,
-                    0,
-                    25);
+                    0);
+
 
             this.loginFormLayout.Controls.Add(
                 this.lblSubtitle,
@@ -430,8 +561,8 @@ namespace CityOfCapeTownMunicipalServices.Forms.Authentication
             this.lblEmail.Text =
                 "Email Address *";
 
-            this.lblEmail.AutoSize =
-                true;
+            this.lblEmail.Dock =
+                DockStyle.Fill;
 
             this.lblEmail.Font =
                 new Font(
@@ -445,12 +576,16 @@ namespace CityOfCapeTownMunicipalServices.Forms.Authentication
                     59,
                     113);
 
-            this.lblEmail.Margin =
+            this.lblEmail.TextAlign =
+                ContentAlignment.BottomLeft;
+
+            this.lblEmail.Padding =
                 new Padding(
                     0,
                     0,
                     0,
                     5);
+
 
             this.loginFormLayout.Controls.Add(
                 this.lblEmail,
@@ -459,37 +594,69 @@ namespace CityOfCapeTownMunicipalServices.Forms.Authentication
 
 
             // =====================================================
-            // EMAIL TEXTBOX
+            // EMAIL INPUT CONTAINER
+            //
+            // The panel gives the TextBox a proper modern height.
             // =====================================================
 
-            this.txtEmail.Dock =
-                DockStyle.Top;
+            this.pnlEmailInput.Dock =
+                DockStyle.Fill;
 
-            this.txtEmail.Font =
-                new Font(
-                    "Segoe UI",
-                    10F);
-
-            this.txtEmail.Margin =
+            this.pnlEmailInput.Margin =
                 new Padding(
                     0,
                     0,
                     0,
-                    2);
+                    3);
+
+            this.pnlEmailInput.Padding =
+                new Padding(
+                    12,
+                    12,
+                    12,
+                    8);
+
+            this.pnlEmailInput.BackColor =
+                Color.White;
+
+            this.pnlEmailInput.BorderStyle =
+                BorderStyle.FixedSingle;
+
+
+            this.txtEmail.Dock =
+                DockStyle.Fill;
+
+            this.txtEmail.BorderStyle =
+                BorderStyle.None;
+
+            this.txtEmail.Font =
+                new Font(
+                    "Segoe UI",
+                    10.5F);
+
+            this.txtEmail.BackColor =
+                Color.White;
+
+
+            this.pnlEmailInput.Controls.Add(
+                this.txtEmail);
+
 
             this.loginFormLayout.Controls.Add(
-                this.txtEmail,
+                this.pnlEmailInput,
                 0,
                 3);
 
 
+            // =====================================================
             // EMAIL ERROR
+            // =====================================================
 
             this.lblEmailError.Text =
                 "";
 
-            this.lblEmailError.AutoSize =
-                true;
+            this.lblEmailError.Dock =
+                DockStyle.Fill;
 
             this.lblEmailError.ForeColor =
                 Color.Firebrick;
@@ -502,12 +669,16 @@ namespace CityOfCapeTownMunicipalServices.Forms.Authentication
             this.lblEmailError.Visible =
                 false;
 
-            this.lblEmailError.Margin =
+            this.lblEmailError.TextAlign =
+                ContentAlignment.TopLeft;
+
+            this.lblEmailError.Padding =
                 new Padding(
-                    0,
+                    2,
                     3,
                     0,
-                    15);
+                    0);
+
 
             this.loginFormLayout.Controls.Add(
                 this.lblEmailError,
@@ -522,8 +693,8 @@ namespace CityOfCapeTownMunicipalServices.Forms.Authentication
             this.lblPassword.Text =
                 "Password *";
 
-            this.lblPassword.AutoSize =
-                true;
+            this.lblPassword.Dock =
+                DockStyle.Fill;
 
             this.lblPassword.Font =
                 new Font(
@@ -537,12 +708,16 @@ namespace CityOfCapeTownMunicipalServices.Forms.Authentication
                     59,
                     113);
 
-            this.lblPassword.Margin =
+            this.lblPassword.TextAlign =
+                ContentAlignment.BottomLeft;
+
+            this.lblPassword.Padding =
                 new Padding(
                     0,
                     0,
                     0,
                     5);
+
 
             this.loginFormLayout.Controls.Add(
                 this.lblPassword,
@@ -551,40 +726,70 @@ namespace CityOfCapeTownMunicipalServices.Forms.Authentication
 
 
             // =====================================================
-            // PASSWORD TEXTBOX
+            // PASSWORD INPUT CONTAINER
             // =====================================================
 
-            this.txtPassword.Dock =
-                DockStyle.Top;
+            this.pnlPasswordInput.Dock =
+                DockStyle.Fill;
 
-            this.txtPassword.Font =
-                new Font(
-                    "Segoe UI",
-                    10F);
-
-            this.txtPassword.UseSystemPasswordChar =
-                true;
-
-            this.txtPassword.Margin =
+            this.pnlPasswordInput.Margin =
                 new Padding(
                     0,
                     0,
                     0,
-                    2);
+                    3);
+
+            this.pnlPasswordInput.Padding =
+                new Padding(
+                    12,
+                    12,
+                    12,
+                    8);
+
+            this.pnlPasswordInput.BackColor =
+                Color.White;
+
+            this.pnlPasswordInput.BorderStyle =
+                BorderStyle.FixedSingle;
+
+
+            this.txtPassword.Dock =
+                DockStyle.Fill;
+
+            this.txtPassword.BorderStyle =
+                BorderStyle.None;
+
+            this.txtPassword.Font =
+                new Font(
+                    "Segoe UI",
+                    10.5F);
+
+            this.txtPassword.BackColor =
+                Color.White;
+
+            this.txtPassword.UseSystemPasswordChar =
+                true;
+
+
+            this.pnlPasswordInput.Controls.Add(
+                this.txtPassword);
+
 
             this.loginFormLayout.Controls.Add(
-                this.txtPassword,
+                this.pnlPasswordInput,
                 0,
                 6);
 
 
+            // =====================================================
             // PASSWORD ERROR
+            // =====================================================
 
             this.lblPasswordError.Text =
                 "";
 
-            this.lblPasswordError.AutoSize =
-                true;
+            this.lblPasswordError.Dock =
+                DockStyle.Fill;
 
             this.lblPasswordError.ForeColor =
                 Color.Firebrick;
@@ -597,12 +802,16 @@ namespace CityOfCapeTownMunicipalServices.Forms.Authentication
             this.lblPasswordError.Visible =
                 false;
 
-            this.lblPasswordError.Margin =
+            this.lblPasswordError.TextAlign =
+                ContentAlignment.TopLeft;
+
+            this.lblPasswordError.Padding =
                 new Padding(
-                    0,
+                    2,
                     3,
                     0,
-                    10);
+                    0);
+
 
             this.loginFormLayout.Controls.Add(
                 this.lblPasswordError,
@@ -611,17 +820,14 @@ namespace CityOfCapeTownMunicipalServices.Forms.Authentication
 
 
             // =====================================================
-            // OPTIONS ROW
+            // OPTIONS
             // =====================================================
 
             TableLayoutPanel optionsTable =
                 new TableLayoutPanel();
 
             optionsTable.Dock =
-                DockStyle.Top;
-
-            optionsTable.Height =
-                35;
+                DockStyle.Fill;
 
             optionsTable.ColumnCount =
                 2;
@@ -630,11 +836,8 @@ namespace CityOfCapeTownMunicipalServices.Forms.Authentication
                 1;
 
             optionsTable.Margin =
-                new Padding(
-                    0,
-                    0,
-                    0,
-                    15);
+                new Padding(0);
+
 
             optionsTable.ColumnStyles.Add(
                 new ColumnStyle(
@@ -646,8 +849,6 @@ namespace CityOfCapeTownMunicipalServices.Forms.Authentication
                     SizeType.Percent,
                     50F));
 
-
-            // REMEMBER
 
             this.chkRemember.Text =
                 "Remember me";
@@ -658,8 +859,12 @@ namespace CityOfCapeTownMunicipalServices.Forms.Authentication
             this.chkRemember.Anchor =
                 AnchorStyles.Left;
 
+            this.chkRemember.ForeColor =
+                Color.FromArgb(
+                    70,
+                    85,
+                    100);
 
-            // FORGOT PASSWORD
 
             this.lnkForgotPassword.Text =
                 "Forgot password?";
@@ -675,6 +880,15 @@ namespace CityOfCapeTownMunicipalServices.Forms.Authentication
                     0,
                     119,
                     200);
+
+            this.lnkForgotPassword.ActiveLinkColor =
+                Color.FromArgb(
+                    0,
+                    59,
+                    113);
+
+            this.lnkForgotPassword.LinkBehavior =
+                LinkBehavior.HoverUnderline;
 
 
             optionsTable.Controls.Add(
@@ -707,6 +921,13 @@ namespace CityOfCapeTownMunicipalServices.Forms.Authentication
             this.btnSignIn.Height =
                 48;
 
+            this.btnSignIn.Margin =
+                new Padding(
+                    0,
+                    6,
+                    0,
+                    8);
+
             this.btnSignIn.BackColor =
                 Color.FromArgb(
                     0,
@@ -731,16 +952,11 @@ namespace CityOfCapeTownMunicipalServices.Forms.Authentication
             this.btnSignIn.Cursor =
                 Cursors.Hand;
 
-            this.btnSignIn.Margin =
-                new Padding(
-                    0,
-                    0,
-                    0,
-                    20);
 
             this.btnSignIn.Click +=
                 new System.EventHandler(
                     this.btnSignIn_Click);
+
 
             this.loginFormLayout.Controls.Add(
                 this.btnSignIn,
@@ -756,10 +972,14 @@ namespace CityOfCapeTownMunicipalServices.Forms.Authentication
                 new Panel();
 
             accountPanel.Dock =
-                DockStyle.Top;
+                DockStyle.Fill;
 
-            accountPanel.Height =
-                90;
+            accountPanel.Padding =
+                new Padding(
+                    0,
+                    5,
+                    0,
+                    0);
 
 
             this.lblNoAccount.Text =
@@ -769,7 +989,7 @@ namespace CityOfCapeTownMunicipalServices.Forms.Authentication
                 DockStyle.Top;
 
             this.lblNoAccount.Height =
-                28;
+                30;
 
             this.lblNoAccount.TextAlign =
                 ContentAlignment.MiddleCenter;
@@ -817,6 +1037,7 @@ namespace CityOfCapeTownMunicipalServices.Forms.Authentication
             this.btnCreateAccount.Cursor =
                 Cursors.Hand;
 
+
             this.btnCreateAccount.Click +=
                 new System.EventHandler(
                     this.btnCreateAccount_Click);
@@ -836,24 +1057,25 @@ namespace CityOfCapeTownMunicipalServices.Forms.Authentication
 
 
             // =====================================================
-            // COMMUNITY PANEL
+            // RIGHT COMMUNITY PANEL
             // =====================================================
 
             this.pnlCommunity.Dock =
                 DockStyle.Fill;
 
-            this.pnlCommunity.BackColor =
-                Color.FromArgb(
-                    235,
-                    247,
-                    253);
-
             this.pnlCommunity.Margin =
                 new Padding(
-                    10,
-                    30,
-                    10,
-                    60);
+                    0,
+                    0,
+                    0,
+                    0);
+
+            this.pnlCommunity.BackColor =
+                Color.FromArgb(
+                    0,
+                    59,
+                    113);
+
 
             this.mainLayout.Controls.Add(
                 this.pnlCommunity,
@@ -861,98 +1083,196 @@ namespace CityOfCapeTownMunicipalServices.Forms.Authentication
                 0);
 
 
-            // COMMUNITY ICON
+            // =====================================================
+            // COMMUNITY IMAGE
+            //
+            // Uses the skyline resource already in your project.
+            // =====================================================
 
-            Label communityIcon =
-                new Label();
-
-            communityIcon.Text =
-                "👥";
-
-            communityIcon.Font =
-                new Font(
-                    "Segoe UI Emoji",
-                    35F);
-
-            communityIcon.TextAlign =
-                ContentAlignment.MiddleCenter;
-
-            communityIcon.Dock =
+            this.picCommunity.Dock =
                 DockStyle.Top;
 
-            communityIcon.Height =
-                110;
+            this.picCommunity.Height =
+                210;
 
-            this.pnlCommunity.Controls.Add(
-                communityIcon);
+            this.picCommunity.SizeMode =
+                PictureBoxSizeMode.Zoom;
 
+            this.picCommunity.BackColor =
+                Color.White;
 
-            // COMMUNITY TITLE
-
-            Label communityTitle =
-                new Label();
-
-            communityTitle.Text =
-                "Join your community";
-
-            communityTitle.Dock =
-                DockStyle.Top;
-
-            communityTitle.Height =
-                50;
-
-            communityTitle.TextAlign =
-                ContentAlignment.MiddleCenter;
-
-            communityTitle.Font =
-                new Font(
-                    "Segoe UI",
-                    13F,
-                    FontStyle.Bold);
-
-            communityTitle.ForeColor =
-                Color.FromArgb(
-                    0,
-                    59,
-                    113);
-
-            this.pnlCommunity.Controls.Add(
-                communityTitle);
-
-            communityTitle.BringToFront();
+            this.picCommunity.Image =
+                Properties.Resources.cape_town_skyline;
 
 
-            // COMMUNITY TEXT
+            // =====================================================
+            // COMMUNITY TEXT AREA
+            // =====================================================
 
-            Label communityText =
-                new Label();
-
-            communityText.Text =
-                "Create an account to report issues,\n" +
-                "track your service requests and stay\n" +
-                "informed about municipal updates.";
-
-            communityText.Dock =
+            this.pnlCommunityText.Dock =
                 DockStyle.Fill;
 
-            communityText.TextAlign =
-                ContentAlignment.TopCenter;
-
-            communityText.Padding =
+            this.pnlCommunityText.Padding =
                 new Padding(
+                    35,
                     25,
-                    20,
-                    25,
+                    35,
                     20);
 
-            communityText.ForeColor =
+            this.pnlCommunityText.BackColor =
                 Color.FromArgb(
                     0,
                     59,
                     113);
 
+
+            // TITLE
+
+            this.lblCommunityTitle.Text =
+                "Your City. Your Community.";
+
+            this.lblCommunityTitle.Dock =
+                DockStyle.Top;
+
+            this.lblCommunityTitle.Height =
+                50;
+
+            this.lblCommunityTitle.Font =
+                new Font(
+                    "Segoe UI",
+                    17F,
+                    FontStyle.Bold);
+
+            this.lblCommunityTitle.ForeColor =
+                Color.White;
+
+            this.lblCommunityTitle.TextAlign =
+                ContentAlignment.MiddleLeft;
+
+
+            // DESCRIPTION
+
+            this.lblCommunityDescription.Text =
+                "Access City of Cape Town municipal services from one convenient place.";
+
+            this.lblCommunityDescription.Dock =
+                DockStyle.Top;
+
+            this.lblCommunityDescription.Height =
+                70;
+
+            this.lblCommunityDescription.Font =
+                new Font(
+                    "Segoe UI",
+                    10F);
+
+            this.lblCommunityDescription.ForeColor =
+                Color.FromArgb(
+                    225,
+                    238,
+                    248);
+
+            this.lblCommunityDescription.TextAlign =
+                ContentAlignment.TopLeft;
+
+
+            // FEATURE 1
+
+            this.lblCommunityFeature1.Text =
+                "✓   Report municipal issues";
+
+            this.lblCommunityFeature1.Dock =
+                DockStyle.Top;
+
+            this.lblCommunityFeature1.Height =
+                42;
+
+            this.lblCommunityFeature1.Font =
+                new Font(
+                    "Segoe UI",
+                    10F,
+                    FontStyle.Bold);
+
+            this.lblCommunityFeature1.ForeColor =
+                Color.White;
+
+            this.lblCommunityFeature1.TextAlign =
+                ContentAlignment.MiddleLeft;
+
+
+            // FEATURE 2
+
+            this.lblCommunityFeature2.Text =
+                "✓   Discover local events";
+
+            this.lblCommunityFeature2.Dock =
+                DockStyle.Top;
+
+            this.lblCommunityFeature2.Height =
+                42;
+
+            this.lblCommunityFeature2.Font =
+                new Font(
+                    "Segoe UI",
+                    10F,
+                    FontStyle.Bold);
+
+            this.lblCommunityFeature2.ForeColor =
+                Color.White;
+
+            this.lblCommunityFeature2.TextAlign =
+                ContentAlignment.MiddleLeft;
+
+
+            // FEATURE 3
+
+            this.lblCommunityFeature3.Text =
+                "✓   Stay informed about your community";
+
+            this.lblCommunityFeature3.Dock =
+                DockStyle.Top;
+
+            this.lblCommunityFeature3.Height =
+                42;
+
+            this.lblCommunityFeature3.Font =
+                new Font(
+                    "Segoe UI",
+                    10F,
+                    FontStyle.Bold);
+
+            this.lblCommunityFeature3.ForeColor =
+                Color.White;
+
+            this.lblCommunityFeature3.TextAlign =
+                ContentAlignment.MiddleLeft;
+
+
+            // IMPORTANT:
+            // Add in reverse order because DockStyle.Top
+            // uses control z-order.
+
+            this.pnlCommunityText.Controls.Add(
+                this.lblCommunityFeature3);
+
+            this.pnlCommunityText.Controls.Add(
+                this.lblCommunityFeature2);
+
+            this.pnlCommunityText.Controls.Add(
+                this.lblCommunityFeature1);
+
+            this.pnlCommunityText.Controls.Add(
+                this.lblCommunityDescription);
+
+            this.pnlCommunityText.Controls.Add(
+                this.lblCommunityTitle);
+
+
             this.pnlCommunity.Controls.Add(
-                communityText);
+                this.pnlCommunityText);
+
+            this.pnlCommunity.Controls.Add(
+                this.picCommunity);
 
 
             // =====================================================
@@ -971,6 +1291,7 @@ namespace CityOfCapeTownMunicipalServices.Forms.Authentication
             this.colourStrip.RowCount =
                 1;
 
+
             for (int i = 0; i < 4; i++)
             {
                 this.colourStrip.ColumnStyles.Add(
@@ -978,6 +1299,7 @@ namespace CityOfCapeTownMunicipalServices.Forms.Authentication
                         SizeType.Percent,
                         25F));
             }
+
 
             AddColour(
                 Color.FromArgb(
@@ -1021,22 +1343,19 @@ namespace CityOfCapeTownMunicipalServices.Forms.Authentication
             this.Controls.Add(
                 this.pnlHeader);
 
+
             this.pnlHeader.BringToFront();
 
             this.colourStrip.BringToFront();
 
 
-            // =====================================================
-            // FINISH
-            // =====================================================
-
             this.ResumeLayout(false);
         }
 
 
-        // =========================================================
-        // ADD FOOTER COLOUR
-        // =========================================================
+        // =====================================================
+        // FOOTER COLOUR
+        // =====================================================
 
         private void AddColour(
             Color colour,
@@ -1053,6 +1372,7 @@ namespace CityOfCapeTownMunicipalServices.Forms.Authentication
 
             panel.BackColor =
                 colour;
+
 
             this.colourStrip.Controls.Add(
                 panel,

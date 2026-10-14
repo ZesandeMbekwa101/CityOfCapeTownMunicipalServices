@@ -1,19 +1,18 @@
-﻿using System.Drawing;
+﻿
+using System;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace CityOfCapeTownMunicipalServices.Forms.Home
 {
     partial class HomeForm
     {
-        private System.ComponentModel.IContainer components;
+        private System.ComponentModel.IContainer components = null;
 
         private Panel pnlHeader;
-
         private PictureBox picLogo;
-
         private Label lblBrand;
         private Label lblSlogan;
-
         private Button btnSignOut;
 
         private Panel pnlContent;
@@ -30,29 +29,26 @@ namespace CityOfCapeTownMunicipalServices.Forms.Home
         private Label lblStatusDescription;
 
         private PictureBox picSkyline;
-
         private TableLayoutPanel colourStrip;
 
         protected override void Dispose(bool disposing)
         {
             if (disposing && components != null)
+            {
                 components.Dispose();
+            }
 
             base.Dispose(disposing);
         }
 
         private void InitializeComponent()
         {
-            components =
-                new System.ComponentModel.Container();
+            components = new System.ComponentModel.Container();
 
             pnlHeader = new Panel();
-
             picLogo = new PictureBox();
-
             lblBrand = new Label();
             lblSlogan = new Label();
-
             btnSignOut = new Button();
 
             pnlContent = new Panel();
@@ -69,106 +65,157 @@ namespace CityOfCapeTownMunicipalServices.Forms.Home
             lblStatusDescription = new Label();
 
             picSkyline = new PictureBox();
-
-            colourStrip =
-                new TableLayoutPanel();
+            colourStrip = new TableLayoutPanel();
 
             SuspendLayout();
 
-            // ============================
-            // FORM
-            // ============================
+            // =====================================================
+            // FORM SETTINGS
+            // =====================================================
 
-            Text =
-                "City of Cape Town – Municipal Services";
+            Text = "City of Cape Town - Municipal Services";
 
-            ClientSize =
-                new Size(1050, 720);
+            ClientSize = new Size(1050, 720);
+            MinimumSize = new Size(850, 600);
 
-            MinimumSize =
-                new Size(850, 600);
+            StartPosition = FormStartPosition.CenterScreen;
 
-            StartPosition =
-                FormStartPosition.CenterScreen;
+            BackColor = Color.White;
+            Font = new Font("Segoe UI", 10F);
 
-            BackColor =
-                Color.White;
+            AutoScaleMode = AutoScaleMode.Dpi;
 
-            AutoScaleMode =
-                AutoScaleMode.Dpi;
+            // =====================================================
+            // MUNICIPAL COLOUR STRIP
+            // =====================================================
 
-            // ============================
-            // HEADER
-            // ============================
+            colourStrip.Dock = DockStyle.Bottom;
+            colourStrip.Height = 12;
 
-            pnlHeader.Dock =
-                DockStyle.Top;
+            colourStrip.ColumnCount = 4;
+            colourStrip.RowCount = 1;
+            colourStrip.Margin = new Padding(0);
 
-            pnlHeader.Height = 100;
+            for (int i = 0; i < 4; i++)
+            {
+                colourStrip.ColumnStyles.Add(
+                    new ColumnStyle(
+                        SizeType.Percent,
+                        25F));
+            }
+
+            AddColour(
+                Color.FromArgb(166, 206, 57), 0);
+
+            AddColour(
+                Color.FromArgb(255, 215, 0), 1);
+
+            AddColour(
+                Color.FromArgb(0, 119, 200), 2);
+
+            AddColour(
+                Color.FromArgb(230, 0, 126), 3);
+
+            // =====================================================
+            // BLUE MUNICIPAL HEADER
+            // =====================================================
+
+            pnlHeader.Dock = DockStyle.Top;
+            pnlHeader.Height = 110;
 
             pnlHeader.BackColor =
                 Color.FromArgb(0, 59, 113);
 
-            Controls.Add(pnlHeader);
+            // =====================================================
+            // CITY LOGO
+            // =====================================================
 
-            picLogo.Location =
-                new Point(30, 15);
-
-            picLogo.Size =
-                new Size(70, 70);
+            picLogo.Location = new Point(25, 18);
+            picLogo.Size = new Size(75, 75);
 
             picLogo.SizeMode =
                 PictureBoxSizeMode.Zoom;
 
             picLogo.Image =
-            Properties.Resources.city_logo;
+                Properties.Resources.city_logo;
 
-            pnlHeader.Controls.Add(
-                picLogo);
+            pnlHeader.Controls.Add(picLogo);
 
-            
+            // =====================================================
+            // CITY NAME
+            // =====================================================
 
-            pnlHeader.Controls.Add(
-                lblBrand);
+            lblBrand.Text =
+                "CITY OF CAPE TOWN\n" +
+                "ISIXEKO SASEKAPA\n" +
+                "STAD KAAPSTAD";
+
+            lblBrand.ForeColor = Color.White;
+
+            lblBrand.Font = new Font(
+                "Segoe UI",
+                10F,
+                FontStyle.Bold);
+
+            lblBrand.Location =
+                new Point(112, 25);
+
+            lblBrand.Size =
+                new Size(210, 65);
+
+            pnlHeader.Controls.Add(lblBrand);
+
+            // =====================================================
+            // MUNICIPAL SLOGAN
+            // =====================================================
 
             lblSlogan.Text =
                 "Making progress possible.\nTogether.";
 
-            lblSlogan.ForeColor =
-                Color.White;
+            lblSlogan.ForeColor = Color.White;
 
-            lblSlogan.Font =
-                new Font(
-                    "Segoe UI",
-                    9F,
-                    FontStyle.Italic);
+            lblSlogan.Font = new Font(
+                "Segoe UI",
+                9F,
+                FontStyle.Italic);
 
-            lblSlogan.AutoSize = true;
+            lblSlogan.TextAlign =
+                ContentAlignment.MiddleRight;
 
-            lblSlogan.Anchor =
-                AnchorStyles.Top |
-                AnchorStyles.Right;
+            lblSlogan.Size =
+                new Size(200, 50);
 
             lblSlogan.Location =
-                new Point(680, 30);
+                new Point(670, 28);
 
-            pnlHeader.Controls.Add(
-                lblSlogan);
+            pnlHeader.Controls.Add(lblSlogan);
 
-            // SIGN OUT
+            // =====================================================
+            // SIGN OUT BUTTON - TOP RIGHT
+            // =====================================================
 
-            btnSignOut.Text =
-                "Sign Out";
+            btnSignOut.Text = "Sign Out";
 
             btnSignOut.Size =
-                new Size(110, 42);
+                new Size(120, 42);
+
+            btnSignOut.Location =
+                new Point(900, 34);
 
             btnSignOut.Anchor =
                 AnchorStyles.Top |
                 AnchorStyles.Right;
 
-            btnSignOut.Location =
-                new Point(900, 29);
+            btnSignOut.BackColor =
+                Color.FromArgb(0, 59, 113);
+
+            btnSignOut.ForeColor =
+                Color.White;
+
+            btnSignOut.Font = new Font(
+                "Segoe UI",
+                10F,
+                FontStyle.Bold);
 
             btnSignOut.FlatStyle =
                 FlatStyle.Flat;
@@ -176,67 +223,73 @@ namespace CityOfCapeTownMunicipalServices.Forms.Home
             btnSignOut.FlatAppearance.BorderColor =
                 Color.White;
 
-            btnSignOut.ForeColor =
-                Color.White;
+            btnSignOut.FlatAppearance.BorderSize = 1;
 
-            btnSignOut.BackColor =
-                Color.FromArgb(0, 59, 113);
-
-            btnSignOut.Cursor =
-                Cursors.Hand;
+            btnSignOut.Cursor = Cursors.Hand;
 
             btnSignOut.Click +=
                 btnSignOut_Click;
 
-            pnlHeader.Controls.Add(
-                btnSignOut);
+            pnlHeader.Controls.Add(btnSignOut);
 
-            // ============================
-            // CONTENT
-            // ============================
+            // Keep Sign Out at top right when resized
+            pnlHeader.Resize += (sender, e) =>
+            {
+                btnSignOut.Location = new Point(
+                    pnlHeader.ClientSize.Width -
+                    btnSignOut.Width - 25,
+                    34);
 
-            pnlContent.Dock =
-                DockStyle.Fill;
+                lblSlogan.Left =
+                    btnSignOut.Left -
+                    lblSlogan.Width - 15;
 
+                btnSignOut.BringToFront();
+            };
+
+            // =====================================================
+            // MAIN CONTENT
+            // =====================================================
+
+            pnlContent.Dock = DockStyle.Fill;
             pnlContent.AutoScroll = true;
 
             pnlContent.Padding =
-                new Padding(50);
+                new Padding(40, 20, 40, 20);
 
-            Controls.Add(
-                pnlContent);
+            pnlContent.BackColor = Color.White;
 
-            pnlContent.BringToFront();
-
+            // =====================================================
             // WELCOME
+            // =====================================================
 
-            lblWelcome.Text =
-                "Welcome!";
+            lblWelcome.Text = "Welcome!";
 
-            lblWelcome.Font =
-                new Font(
-                    "Segoe UI",
-                    22F,
-                    FontStyle.Bold);
+            lblWelcome.Font = new Font(
+                "Segoe UI",
+                22F,
+                FontStyle.Bold);
 
             lblWelcome.ForeColor =
                 Color.FromArgb(0, 59, 113);
 
             lblWelcome.Location =
-                new Point(55, 35);
+                new Point(55, 30);
 
             lblWelcome.AutoSize = true;
 
-            pnlContent.Controls.Add(
-                lblWelcome);
+            pnlContent.Controls.Add(lblWelcome);
+
+            // =====================================================
+            // QUESTION
+            // =====================================================
 
             lblQuestion.Text =
                 "How can we assist you today?";
 
-            lblQuestion.Font =
-                new Font(
-                    "Segoe UI",
-                    13F);
+            lblQuestion.Font = new Font(
+                "Segoe UI",
+                13F);
 
             lblQuestion.ForeColor =
                 Color.FromArgb(0, 59, 113);
@@ -246,12 +299,11 @@ namespace CityOfCapeTownMunicipalServices.Forms.Home
 
             lblQuestion.AutoSize = true;
 
-            pnlContent.Controls.Add(
-                lblQuestion);
+            pnlContent.Controls.Add(lblQuestion);
 
-            // ============================
-            // REPORT ISSUE
-            // ============================
+            // =====================================================
+            // REPORT ISSUE BUTTON
+            // =====================================================
 
             btnReportIssue.Text =
                 "     📝   Report Issue";
@@ -259,11 +311,10 @@ namespace CityOfCapeTownMunicipalServices.Forms.Home
             btnReportIssue.TextAlign =
                 ContentAlignment.MiddleLeft;
 
-            btnReportIssue.Font =
-                new Font(
-                    "Segoe UI",
-                    12F,
-                    FontStyle.Bold);
+            btnReportIssue.Font = new Font(
+                "Segoe UI",
+                12F,
+                FontStyle.Bold);
 
             btnReportIssue.ForeColor =
                 Color.White;
@@ -274,8 +325,7 @@ namespace CityOfCapeTownMunicipalServices.Forms.Home
             btnReportIssue.FlatStyle =
                 FlatStyle.Flat;
 
-            btnReportIssue.FlatAppearance.BorderSize =
-                0;
+            btnReportIssue.FlatAppearance.BorderSize = 0;
 
             btnReportIssue.Location =
                 new Point(55, 135);
@@ -288,11 +338,14 @@ namespace CityOfCapeTownMunicipalServices.Forms.Home
                 AnchorStyles.Left |
                 AnchorStyles.Right;
 
-            btnReportIssue.Cursor =
-                Cursors.Hand;
+            btnReportIssue.Cursor = Cursors.Hand;
 
-            pnlContent.Controls.Add(
-                btnReportIssue);
+            btnReportIssue.Click +=
+                btnReportIssue_Click;
+
+            pnlContent.Controls.Add(btnReportIssue);
+
+            // Report description
 
             lblReportDescription.Text =
                 "Let us know about a problem in your community.";
@@ -310,39 +363,33 @@ namespace CityOfCapeTownMunicipalServices.Forms.Home
 
             pnlContent.Controls.Add(
                 lblReportDescription);
-            this.btnReportIssue.Click +=
-    new System.EventHandler(
-        this.btnReportIssue_Click);
 
             lblReportDescription.BringToFront();
 
-            // ============================
-            // EVENTS
-            // ============================
+            // =====================================================
+            // LOCAL EVENTS BUTTON
+            // =====================================================
 
             btnEvents.Text =
-                "     📅   Local Events and Announcements        🔒";
+                "     📅   Local Events and Announcements";
 
             btnEvents.TextAlign =
                 ContentAlignment.MiddleLeft;
 
-            btnEvents.Font =
-                new Font(
-                    "Segoe UI",
-                    11F,
-                    FontStyle.Bold);
+            btnEvents.Font = new Font(
+                "Segoe UI",
+                11F,
+                FontStyle.Bold);
 
-            btnEvents.ForeColor =
-                Color.FromArgb(100, 115, 130);
+            btnEvents.ForeColor = Color.White;
 
             btnEvents.BackColor =
-                Color.FromArgb(240, 243, 245);
+                Color.FromArgb(0, 119, 200);
 
             btnEvents.FlatStyle =
                 FlatStyle.Flat;
 
-            btnEvents.FlatAppearance.BorderSize =
-                0;
+            btnEvents.FlatAppearance.BorderSize = 0;
 
             btnEvents.Location =
                 new Point(55, 225);
@@ -355,19 +402,23 @@ namespace CityOfCapeTownMunicipalServices.Forms.Home
                 AnchorStyles.Left |
                 AnchorStyles.Right;
 
-            btnEvents.Enabled = false;
+            btnEvents.Cursor = Cursors.Hand;
+            btnEvents.Enabled = true;
 
-            pnlContent.Controls.Add(
-                btnEvents);
+            btnEvents.Click += btnEvents_Click;
+
+            pnlContent.Controls.Add(btnEvents);
+
+            // Events description
 
             lblEventsDescription.Text =
-                "Stay informed about events and important updates.";
+                "Discover upcoming events, notices and important community updates.";
 
             lblEventsDescription.ForeColor =
-                Color.Gray;
+                Color.White;
 
             lblEventsDescription.BackColor =
-                Color.FromArgb(240, 243, 245);
+                Color.FromArgb(0, 119, 200);
 
             lblEventsDescription.Location =
                 new Point(135, 270);
@@ -379,9 +430,9 @@ namespace CityOfCapeTownMunicipalServices.Forms.Home
 
             lblEventsDescription.BringToFront();
 
-            // ============================
-            // SERVICE STATUS
-            // ============================
+            // =====================================================
+            // SERVICE REQUEST STATUS
+            // =====================================================
 
             btnStatus.Text =
                 "     📄   Service Request Status                 🔒";
@@ -389,11 +440,10 @@ namespace CityOfCapeTownMunicipalServices.Forms.Home
             btnStatus.TextAlign =
                 ContentAlignment.MiddleLeft;
 
-            btnStatus.Font =
-                new Font(
-                    "Segoe UI",
-                    11F,
-                    FontStyle.Bold);
+            btnStatus.Font = new Font(
+                "Segoe UI",
+                11F,
+                FontStyle.Bold);
 
             btnStatus.ForeColor =
                 Color.FromArgb(100, 115, 130);
@@ -404,8 +454,7 @@ namespace CityOfCapeTownMunicipalServices.Forms.Home
             btnStatus.FlatStyle =
                 FlatStyle.Flat;
 
-            btnStatus.FlatAppearance.BorderSize =
-                0;
+            btnStatus.FlatAppearance.BorderSize = 0;
 
             btnStatus.Location =
                 new Point(55, 315);
@@ -420,8 +469,9 @@ namespace CityOfCapeTownMunicipalServices.Forms.Home
 
             btnStatus.Enabled = false;
 
-            pnlContent.Controls.Add(
-                btnStatus);
+            pnlContent.Controls.Add(btnStatus);
+
+            // Status description
 
             lblStatusDescription.Text =
                 "Check the status of your service request.";
@@ -442,9 +492,9 @@ namespace CityOfCapeTownMunicipalServices.Forms.Home
 
             lblStatusDescription.BringToFront();
 
-            // ============================
-            // SKYLINE
-            // ============================
+            // =====================================================
+            // CAPE TOWN SKYLINE
+            // =====================================================
 
             picSkyline.Location =
                 new Point(55, 420);
@@ -461,51 +511,31 @@ namespace CityOfCapeTownMunicipalServices.Forms.Home
                 PictureBoxSizeMode.Zoom;
 
             picSkyline.Image =
-            Properties.Resources.cape_town_skyline;
+                Properties.Resources.cape_town_skyline;
 
-            pnlContent.Controls.Add(
-                picSkyline);
+            pnlContent.Controls.Add(picSkyline);
 
-            // ============================
-            // COLOUR STRIP
-            // ============================
+            // =====================================================
+            // ADD PANELS TO FORM
+            // =====================================================
 
-            colourStrip.Dock =
-                DockStyle.Bottom;
+            Controls.Add(pnlContent);
+            Controls.Add(pnlHeader);
+            Controls.Add(colourStrip);
 
-            colourStrip.Height = 12;
+            // Keep header and colour strip visible
+            pnlHeader.BringToFront();
+            colourStrip.BringToFront();
 
-            colourStrip.ColumnCount = 4;
-
-            for (int i = 0; i < 4; i++)
-            {
-                colourStrip.ColumnStyles.Add(
-                    new ColumnStyle(
-                        SizeType.Percent,
-                        25F));
-            }
-
-            AddColour(
-                Color.FromArgb(166, 206, 57),
-                0);
-
-            AddColour(
-                Color.FromArgb(255, 215, 0),
-                1);
-
-            AddColour(
-                Color.FromArgb(0, 119, 200),
-                2);
-
-            AddColour(
-                Color.FromArgb(230, 0, 126),
-                3);
-
-            Controls.Add(
-                colourStrip);
+            // Keep Sign Out above header controls
+            btnSignOut.BringToFront();
 
             ResumeLayout(false);
         }
+
+        // =====================================================
+        // ADD MUNICIPAL COLOUR
+        // =====================================================
 
         private void AddColour(
             Color colour,
@@ -513,14 +543,9 @@ namespace CityOfCapeTownMunicipalServices.Forms.Home
         {
             Panel panel = new Panel();
 
-            panel.Dock =
-                DockStyle.Fill;
-
-            panel.Margin =
-                new Padding(0);
-
-            panel.BackColor =
-                colour;
+            panel.Dock = DockStyle.Fill;
+            panel.Margin = new Padding(0);
+            panel.BackColor = colour;
 
             colourStrip.Controls.Add(
                 panel,

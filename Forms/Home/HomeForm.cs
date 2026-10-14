@@ -1,8 +1,11 @@
-﻿using System;
+﻿
+using System;
 using System.Windows.Forms;
+
 using CityOfCapeTownMunicipalServices.Forms.Issues;
-using CityOfCapeTownMunicipalServices.Services;
+using CityOfCapeTownMunicipalServices.Forms.Events;
 using CityOfCapeTownMunicipalServices.Forms.Authentication;
+using CityOfCapeTownMunicipalServices.Services;
 
 namespace CityOfCapeTownMunicipalServices.Forms.Home
 {
@@ -11,10 +14,8 @@ namespace CityOfCapeTownMunicipalServices.Forms.Home
         public HomeForm()
         {
             InitializeComponent();
-
             LoadCurrentUser();
         }
-
 
         // =====================================================
         // LOAD CURRENT USER
@@ -33,56 +34,77 @@ namespace CityOfCapeTownMunicipalServices.Forms.Home
                 return;
             }
 
-
             lblWelcome.Text =
                 "Welcome, " +
                 UserSession.CurrentUser.FirstName +
                 "!";
         }
-        private void btnReportIssue_Click(
-                object sender,
-                EventArgs e)
-        {
-            ReportIssueForm reportIssueForm =
-                new ReportIssueForm();
-
-            reportIssueForm.ShowDialog(this);
-        }
-
 
         // =====================================================
-        // SIGN OUT
+        // REPORT ISSUE
+        // =====================================================
+
+        private void btnReportIssue_Click(
+            object sender,
+            EventArgs e)
+        {
+            using (ReportIssueForm reportIssueForm =
+                new ReportIssueForm())
+            {
+                reportIssueForm.ShowDialog(this);
+            }
+        }
+
+        // =====================================================
+        // LOCAL EVENTS AND ANNOUNCEMENTS
+        // =====================================================
+
+        private void btnEvents_Click(
+            object sender,
+            EventArgs e)
+        {
+            using (LocalEventsForm localEventsForm =
+                new LocalEventsForm())
+            {
+                localEventsForm.ShowDialog(this);
+            }
+        }
+
+        // =====================================================
+        // SIGN OUT - RETURN TO SIGN UP
         // =====================================================
 
         private void btnSignOut_Click(
             object sender,
             EventArgs e)
         {
-            DialogResult result =
-                MessageBox.Show(
-                    "Are you sure you want to sign out?",
-                    "Sign Out",
-                    MessageBoxButtons.YesNo,
-                    MessageBoxIcon.Question);
-
+            DialogResult result = MessageBox.Show(
+                "Are you sure you want to sign out?",
+                "Sign Out",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question);
 
             if (result != DialogResult.Yes)
             {
                 return;
             }
 
-
-            // Remove logged-in user
+            // Clear logged-in user session
             UserSession.EndSession();
 
+            // Open the Sign Up screen
+            SignInForm signInForm = new SignInForm();
 
-            // Return to sign in
-            SignInForm signInForm =
-                new SignInForm();
+            // Keep this dashboard hidden
+            // while the Sign Up screen is open.
+            this.Hide();
+
+            signInForm.FormClosed += (s, args) =>
+            {
+                this.Close();
+            };
 
             signInForm.Show();
-
-            this.Hide();
         }
     }
 }

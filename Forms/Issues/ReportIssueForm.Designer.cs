@@ -1080,24 +1080,7 @@ namespace CityOfCapeTownMunicipalServices.Forms.Issues
                     FontStyle.Bold);
 
 
-            this.progressEngagement.Location =
-                new Point(
-                    35,
-                    38);
-
-            this.progressEngagement.Size =
-                new Size(
-                    430,
-                    12);
-
-            this.progressEngagement.Minimum =
-                0;
-
-            this.progressEngagement.Maximum =
-                100;
-
-            this.progressEngagement.Value =
-                72;
+            
 
 
             this.lblCommunity.Text =
@@ -1125,8 +1108,7 @@ namespace CityOfCapeTownMunicipalServices.Forms.Issues
             this.pnlEngagement.Controls.Add(
                 this.lblEngagement);
 
-            this.pnlEngagement.Controls.Add(
-                this.progressEngagement);
+            
 
             this.pnlEngagement.Controls.Add(
                 this.lblCommunity);
